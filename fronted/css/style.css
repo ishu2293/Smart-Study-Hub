@@ -428,41 +428,7 @@ textarea::placeholder {
   font-size: 32px;
   margin-bottom: 30px;
 }
-#subjectsContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  width: 100%;
-  margin: 0;        
-  padding: 0;       
-}
 
-.subject-card {
-  height: 250px;
-  background: white;
-  color: #333;
-  padding: 20px;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.subject-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  background: #f0f4ff;
-}
-
-.subject-card h3 {
-  margin: 0;
-  font-size: 40px;
-  color: #4a47a3;
-}
-
-.subject-card p {
-  margin-top: 8px;
-  font-size: 27px;
-}
 
 .container {
   text-align: center;
@@ -659,4 +625,79 @@ textarea::placeholder {
 .quick-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 40px rgba(123,75,120,0.5);
+}
+
+
+
+/* Container */
+.subjects-container {
+  padding: 40px;
+  text-align: left;
+}
+
+/* Heading */
+.subjects-container h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.subjects-container .subtitle {
+  color: #cfc3d9;
+  margin-bottom: 30px;
+}
+
+/* Grid Layout */
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* Card Style */
+.subject-box {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 25px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Icon */
+.subject-box i {
+  font-size: 28px;
+  color: #e0b3ff;
+  margin-bottom: 15px;
+}
+
+/* Title */
+.subject-box h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Description */
+.subject-box p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #f1e6f0;
+}
+
+/* Hover Effect */
+.subject-box:hover {
+  transform: translateY(-8px);
+  border: 1px solid #e0b3ff;
+  box-shadow: 0 10px 30px rgba(123,75,120,0.5);
+}
+
+.subject-box.active {
+  border: 1px solid #e0b3ff;
+  box-shadow: 0 0 20px rgba(224,179,255,0.6);
+}
+
+@media (max-width: 768px) {
+  .subjects-grid {
+    grid-template-columns: 1fr;
+  }
 }
