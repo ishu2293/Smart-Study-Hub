@@ -1,4 +1,18 @@
 {
+<<<<<<< HEAD
+  "name": "study-hub",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react-router-dom": "^7.13.2"
+=======
   "name": "studyhub-backend",
   "version": "1.0.0",
   "type": "commonjs",
@@ -15,5 +29,6 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.0"
+>>>>>>> b8ac5c4c328e8dde96d9d1e6ee7e0e9b778b6612
   }
 }

@@ -1,5 +1,9 @@
+<<<<<<< HEAD
+const loginForm = document.getElementById("loginForm");
+=======
 const API = "http://localhost:5000/api";
 
+>>>>>>> b8ac5c4c328e8dde96d9d1e6ee7e0e9b778b6612
 const registerForm = document.getElementById("registerForm");
 
 if (loginForm) {
@@ -22,10 +26,15 @@ if (loginForm) {
   });
 }
 
+<<<<<<< HEAD
+if (registerForm) {
+  registerForm.addEventListener("submit", async (e) => {
+=======
 
 // REGISTER
 if (registerForm) {
   registerForm.addEventListener("submit", async function(e) {
+>>>>>>> b8ac5c4c328e8dde96d9d1e6ee7e0e9b778b6612
     e.preventDefault();
 
     const data = {

@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+const topics = [
+  "Binary Search",
+  "SQL Joins",
+  "Process Scheduling",
+  "OSI Model"
+];
+
+const container = document.getElementById("revisionTopics");
+
+if (container) {
+  topics.forEach(topic => {
+    const div = document.createElement("div");
+    div.innerText = topic;
+    div.classList.add("subject-card");
+    container.appendChild(div);
+  });
+=======
 let notesData = JSON.parse(localStorage.getItem("notesData")) || {};
 
 let currentNotes = [];
@@ -34,4 +52,5 @@ function nextNote() {
 
   currentIndex = (currentIndex + 1) % currentNotes.length;
   showNote();
+>>>>>>> b8ac5c4c328e8dde96d9d1e6ee7e0e9b778b6612
 }
