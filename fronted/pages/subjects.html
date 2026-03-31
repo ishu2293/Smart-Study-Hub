@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subjects - StudyHub</title>
+
+  <!-- Existing CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <h1><i class="fa-solid fa-book-open"></i> StudyHub</h1>
+
+  <ul class="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="#" class="active">Subjects</a></li>
+    <li><a href="notes.html">Notes</a></li>
+    <li><a href="flashcards.html">Flashcards</a></li>
+    <li><a href="revision.html">Revision</a></li>
+  </ul>
+
+  <div class="auth-links">
+    <a href="#">☀️</a>
+    <a href="#">🔓</a>
+  </div>
+</nav>
+
+<!-- Subjects Section -->
+<div class="subjects-container">
+
+  <h1>Your subjects</h1>
+  <p class="subtitle">Select a subject to focus your study session</p>
+
+  <div class="subjects-grid">
+
+    <!-- DSA -->
+    <div class="subject-box" onclick="goToNotes('DSA')">
+      <i class="fa-solid fa-code"></i>
+      <h3>Data Structures & Algorithms</h3>
+      <p>Arrays, linked lists, trees, graphs, sorting, searching & dynamic programming.</p>
+    </div>
+
+    <!-- DBMS -->
+    <div class="subject-box active" onclick="goToNotes('DBMS')">
+      <i class="fa-solid fa-database"></i>
+      <h3>Database Management Systems</h3>
+      <p>SQL queries, normalization, transactions, indexing & database design.</p>
+    </div>
+
+    <!-- OS -->
+    <div class="subject-box" onclick="goToNotes('OS')">
+      <i class="fa-solid fa-microchip"></i>
+      <h3>Operating Systems</h3>
+      <p>Process management, memory allocation, scheduling & file systems.</p>
+    </div>
+
+    <!-- CN -->
+    <div class="subject-box" onclick="goToNotes('CN')">
+      <i class="fa-solid fa-network-wired"></i>
+      <h3>Computer Networks</h3>
+      <p>OSI model, TCP/IP, routing algorithms & network security.</p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Script -->
+<script>
+function goToNotes(subject) {
+  window.location.href = "notes.html?subject=" + subject;
+}
+</script>
+
+</body>
+</html>
+
