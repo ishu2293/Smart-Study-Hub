@@ -4,7 +4,7 @@ const protect = require("../middleware/authMiddleware");
 const {
   getFlashcards,
   addFlashcard
-} = require("../controllers/flashcardController");
+} = require("../controllers/flashcardContoller");
 
 router.get("/", protect, getFlashcards);
 router.post("/", protect, addFlashcard);
