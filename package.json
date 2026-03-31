@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "study-hub",
   "version": "1.0.0",
   "main": "index.js",
@@ -11,5 +12,23 @@
   "description": "",
   "dependencies": {
     "react-router-dom": "^7.13.2"
+=======
+  "name": "studyhub-backend",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "StudyHub Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.0"
+>>>>>>> b8ac5c4c328e8dde96d9d1e6ee7e0e9b778b6612
   }
 }

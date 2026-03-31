@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // GET SUBJECT FROM URL
 const params = new URLSearchParams(window.location.search);
 const subject = params.get("subject");
@@ -60,11 +61,18 @@ function displayNotes(notes) {
 // ➕ ADD NOTE
 // ============================
 document.getElementById("noteForm").addEventListener("submit", async function(e) {
+=======
+const form = document.getElementById("noteForm");
+const list = document.getElementById("notesList");
+
+form.addEventListener("submit", (e) => {
+>>>>>>> b8ac5c4c328e8dde96d9d1e6ee7e0e9b778b6612
   e.preventDefault();
 
   const title = document.getElementById("title").value;
   const content = document.getElementById("content").value;
 
+<<<<<<< HEAD
   if (!title || !content) return;
 
   try {
@@ -96,3 +104,10 @@ document.getElementById("noteForm").addEventListener("submit", async function(e)
 // 🚀 INITIAL LOAD
 // ============================
 fetchNotes();
+=======
+  const li = document.createElement("li");
+  li.innerText = title + " - " + content;
+
+  list.appendChild(li);
+});
+>>>>>>> b8ac5c4c328e8dde96d9d1e6ee7e0e9b778b6612
