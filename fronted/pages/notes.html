@@ -1,23 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Notes</title>
+  <meta charset="UTF-8">
+  <title>Notes - StudyHub</title>
+
   <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
-<div class="notes-container">
-  <h2>Notes</h2>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <h1><i class="fa-solid fa-book-open"></i> StudyHub</h1>
 
-  <form id="noteForm">
-    <input type="text" id="title" placeholder="Title">
-    <textarea id="content" placeholder="Write notes..."></textarea>
-    <button type="submit">Add Note</button>
-  </form>
+  <ul class="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="subjects.html">Subjects</a></li>
+    <li><a href="flashcards.html">Flashcards</a></li>
+    <li><a href="revision.html">Revision</a></li>
+  </ul>
 
-  <ul id="notesList"></ul>
+  <div class="auth-links">
+    <a href="#">☀️</a>
+    <a href="#">🔓</a>
+  </div>
+</nav>
+
+<!-- NOTES PAGE -->
+<div class="subjects-container">
+
+  <!-- SUBJECT TITLE -->
+  <h1 id="subjectTitle">Notes</h1>
+  <p class="subtitle">
+    Clear definitions and explanations for key concepts
+  </p>
+
+  <!-- CONTENT -->
+  <div class="subjects-grid" id="chapters"></div>
+
 </div>
 
+<!-- SCRIPT -->
 <script src="../js/notes.js"></script>
+
 </body>
 </html>

@@ -701,3 +701,50 @@ textarea::placeholder {
     grid-template-columns: 1fr;
   }
 }
+
+.notes-page {
+  padding: 40px;
+  background: #0b1b2b;
+  color: white;
+}
+
+.subject-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.subject-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subject-header h2 {
+  margin: 0;
+}
+
+.concepts {
+  margin-top: 20px;
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.concept-card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.concept-card h3 {
+  margin-bottom: 10px;
+  color: #1abc9c;
+}
+
+.concept-card p {
+  font-size: 14px;
+  color: #cfd8dc;
+}
