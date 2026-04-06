@@ -920,3 +920,145 @@ textarea::placeholder {
     transform: translateY(0);
   }
 }
+
+/* SUBJECT DROPDOWN */
+#subjectSelect {
+  padding: 10px;
+  border-radius: 8px;
+  margin: 15px;
+  font-size: 16px;
+}
+
+/* TOPICS GRID */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+  width: 80%;
+}
+
+/* TOPIC CARD */
+.topic-card {
+  padding: 15px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.topic-card:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.2);
+}
+
+/* PROGRESS */
+.progress {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #e0b3ff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .topics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* REVISION PAGE IMPROVEMENTS */
+
+#subjectSelect, #modeSelect {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Buttons */
+.revision-container button {
+  margin: 10px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #3a0243;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.revision-container button:hover {
+  background: #e0b3ff;
+  color: #3a0243;
+}
+
+/* Progress */
+#progressText {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #e0b3ff;
+}
+
+/* BIG FLASHCARD */
+.flashcard {
+  width: 500px;
+  height: 250px;
+  font-size: 22px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .flashcard {
+    width: 90%;
+    height: auto;
+    font-size: 18px;
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.button-group button {
+  padding: 12px 18px;
+  border-radius: 25px;
+  border: none;
+  background: #3a0243;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button-group button:hover {
+  background: #e0b3ff;
+  color: #3a0243;
+}
+
+.option-btn {
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: none;
+  background: #3a0243;
+  color: white;
+  cursor: pointer;
+}
+
+.option-btn:hover {
+  background: #e0b3ff;
+  color: #3a0243;
+}
+
+#optionsContainer {
+  margin-top: 15px;
+}
