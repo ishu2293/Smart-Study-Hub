@@ -1,5 +1,4 @@
 require("dotenv").config();
-process.env.OPENAI_API_KEY
 
 const express = require("express");
 const cors = require("cors");
@@ -18,7 +17,12 @@ app.use(express.json());
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/notes", require("./routes/noteRoutes"));
 app.use("/api/flashcards", require("./routes/flashcardRoutes"));
-app.use("/api/ai", require("./routes/aiRoutes")); // chatbot + interview
+app.use("/api/ai", require("./routes/aiRoutes")); // chatbot
+
+// ✅ Test route
+app.get("/", (req, res) => {
+  res.send("StudyHub Backend Running");
+});
 
 // ✅ Error Handler (LAST)
 const errorHandler = require("./middleware/errorHandler");
