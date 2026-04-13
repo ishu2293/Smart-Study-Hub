@@ -1,54 +1,121 @@
-<<<<<<< HEAD
-const loginForm = document.getElementById("loginForm");
-=======
 const API = "http://localhost:5000/api";
 
->>>>>>> b8ac5c4c328e8dde96d9d1e6ee7e0e9b778b6612
+const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
 
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const data = {
-      email: email.value,
-      password: password.value
-    };
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    
+    // In case there are no IDs but generic inputs
+    const email = emailInput ? emailInput.value : document.querySelector('input[type="email"]').value;
+    const password = passwordInput ? passwordInput.value : document.querySelector('input[type="password"]').value;
 
-    const res = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(data)
-    });
+    const data = { email, password };
 
-    const result = await res.json();
-    alert(result.message);
+    try {
+      const res = await fetch(`${API}/auth/login`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      
+      if (res.ok) {
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("user", JSON.stringify(result.user));
+        alert(result.message || "Logged in successfully!");
+        window.location.href = "dashboard.html";
+      } else {
+        alert(result.message || "Login failed");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error logging in");
+    }
   });
 }
 
-<<<<<<< HEAD
-if (registerForm) {
-  registerForm.addEventListener("submit", async (e) => {
-=======
-
-// REGISTER
 if (registerForm) {
   registerForm.addEventListener("submit", async function(e) {
->>>>>>> b8ac5c4c328e8dde96d9d1e6ee7e0e9b778b6612
     e.preventDefault();
 
-    const data = {
-      email: email.value,
-      password: password.value
-    };
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    
+    const email = emailInput ? emailInput.value : document.querySelector('input[type="email"]').value;
+    const password = passwordInput ? passwordInput.value : document.querySelector('input[type="password"]').value;
 
-    const res = await fetch("http://localhost:5000/api/auth/register", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(data)
-    });
+    const data = { email, password };
 
-    const result = await res.json();
-    alert(result.message);
+    try {
+      const res = await fetch(`${API}/auth/register`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      
+      if (res.ok) {
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("user", JSON.stringify(result.user));
+        alert(result.message || "Registered successfully!");
+        window.location.href = "dashboard.html";
+      } else {
+        alert(result.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error registering");
+    }
+  });
+}
+
+// LOGOUT function
+function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+
+// Attach logout to any button with id="logoutBtn"
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
+});
+
+// Reset Password
+const resetPasswordForm = document.getElementById("resetPasswordForm");
+
+if (resetPasswordForm) {
+  resetPasswordForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("resetEmail").value;
+    const newPassword = document.getElementById("newPassword").value;
+
+    try {
+      const res = await fetch(`${API}/auth/reset-password`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, newPassword })
+      });
+      const result = await res.json();
+      if (res.ok) {
+        alert(result.message || "Password updated! Please login.");
+        window.location.href = "login.html";
+      } else {
+        alert(result.message || "Failed to reset password.");
+      }
+    } catch(err) {
+      console.error(err);
+      alert("Error processing request.");
+    }
   });
 }

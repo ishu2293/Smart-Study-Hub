@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
   const params = new URLSearchParams(window.location.search);
   const subject = params.get("subject");
@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const subjectsData = {
   DSA: {
     title: "Data Structures & Algorithms",
+    youtube: "https://www.youtube.com/embed/8hly31xKli0",
     concepts: [
       {
         name: "Arrays",
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   DBMS: {
     title: "Database Management Systems",
+    youtube: "https://www.youtube.com/embed/kBdlM6hNDAE",
     concepts: [
       {
         name: "SQL",
@@ -77,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   OS: {
     title: "Operating Systems",
+    youtube: "https://www.youtube.com/embed/vBURTt97EkA",
     concepts: [
       {
         name: "Process Management",
@@ -108,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   CN: {
     title: "Computer Networks",
+    youtube: "https://www.youtube.com/embed/IPvYjXCsTg8",
     concepts: [
       {
         name: "OSI Model",
@@ -148,21 +152,102 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const data = subjectsData[subject];
 
-  subjectTitle.innerText = data.title;
+  if (data) {
+    subjectTitle.innerText = data.title;
 
-  // CREATE CARDS
-  data.concepts.forEach(concept => {
+    // INJECT YOUTUBE IFRAME
+    if (data.youtube) {
+        let ytDiv = document.createElement("div");
+        ytDiv.style.marginBottom = "30px";
+        ytDiv.style.textAlign = "center";
+        ytDiv.style.gridColumn = "1 / -1"; // Span full width for grid
+        ytDiv.innerHTML = `<iframe width="100%" height="400" src="${data.youtube}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.1);"></iframe>`;
+        container.appendChild(ytDiv);
+    }
 
-    let div = document.createElement("div");
-    div.classList.add("subject-box");
+    // CREATE CARDS
+    data.concepts.forEach(concept => {
 
-    div.innerHTML = `
-      <h3>${concept.name}</h3>
-      <p style="color:#e0b3ff">${concept.desc}</p>
-      <p>${concept.detail}</p>
-    `;
+      let div = document.createElement("div");
+      div.classList.add("subject-box");
 
-    container.appendChild(div);
-  });
+      div.innerHTML = `
+        <h3>${concept.name}</h3>
+        <p style="color:#e0b3ff">${concept.desc}</p>
+        <p>${concept.detail}</p>
+      `;
+
+      container.appendChild(div);
+    });
+  }
+
+  // FETCH NATIVE USER NOTES
+  async function loadUserNotes() {
+    try {
+      const token = localStorage.getItem("token");
+      if(token) {
+          // let's fetch ALL notes generic by just grabbing from whatever chapter we can or assuming the API was updated
+          const backendRes = await fetchWithAuth(`/notes/All/General`); 
+          if(backendRes && backendRes.ok) {
+              const backendNotes = await backendRes.json();
+              backendNotes.forEach(userNote => {
+                  let div = document.createElement("div");
+                  div.classList.add("subject-box");
+                  div.style.borderTop = "3px solid #5eff5e";
+                  div.innerHTML = `
+                  <h3>[My Note] ${userNote.title}</h3>
+                  <p><b>Chapter:</b> ${userNote.chapter}</p>
+                  <p>${userNote.content}</p>
+                  `;
+                  container.prepend(div);
+              });
+          }
+      }
+    } catch(err) {
+       console.error("Error fetching native notes", err);
+    }
+  }
+
+  await loadUserNotes();
+
+  // CREATE NOTE LOGIC
+  const createNoteForm = document.getElementById("createNoteForm");
+  if (createNoteForm) {
+    createNoteForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const fullContent = document.getElementById("noteContent").value.trim();
+      
+      // Auto-extract title from first 4 words of the note
+      const words = fullContent.split(" ");
+      const generatedTitle = words.slice(0, 4).join(" ") + (words.length > 4 ? "..." : "");
+
+      // Default to "General" if user hasn't selected a subject page yet
+      const subjectInput = subject || "General";
+      const chapterInput = "General";
+
+      try {
+        const res = await fetchWithAuth("/notes", {
+          method: "POST",
+          body: JSON.stringify({
+            subject: subjectInput,
+            chapter: chapterInput,
+            title: generatedTitle,
+            content: fullContent
+          })
+        });
+
+        if (res && res.ok) {
+          alert("Note Created successfully!");
+          window.location.reload(); // Quick refresh to show new note
+        } else {
+          alert("Failed to create note");
+        }
+      } catch(err) {
+        console.error(err);
+        alert("Error creating note");
+      }
+    });
+  }
 
 });

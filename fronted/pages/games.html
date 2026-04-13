@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Games Arena - StudyHub</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .game-container {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
+    }
+    .word-box {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .letter-slot {
+      width: 40px;
+      height: 50px;
+      border-bottom: 4px solid #b366ff;
+      font-size: 32px;
+      font-weight: bold;
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      text-transform: uppercase;
+      padding-bottom: 5px;
+    }
+    .keyboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .key-btn {
+      padding: 10px 15px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: #2a2a2a !important; /* Force dark background */
+      color: #ffffff !important;      /* Force bright white text */
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .key-btn:hover {
+      background: #b366ff !important;
+      color: #ffffff !important;
+      transform: translateY(-2px);
+    }
+    .key-btn:disabled {
+      background: #1a1a1a !important;
+      color: #555555 !important;
+      border-color: #333333 !important;
+      cursor: not-allowed;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <h1><i class="fa-solid fa-gamepad"></i> Games Arena</h1>
+  <ul class="nav-links">
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="subjects.html">Subjects</a></li>
+    <li><a href="flashcards.html">Flashcards</a></li>
+    <li><a href="revesion.html">Revision</a></li>
+  </ul>
+</nav>
+
+<div class="game-container" id="gameScreen">
+  <h2 style="color: #ff66b3; font-size: 32px; margin-top:0;">👾 Tech Term Guesser</h2>
+  <p style="color: #cfc3d9; font-size:16px;">Crack the underlying Computer Science code based on the definition!</p>
+  
+  <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; margin-top:20px; border-left: 4px solid #66ffb3;">
+    <h3 style="color:#66ffb3; margin:0 0 10px 0;">Definition:</h3>
+    <p id="definitionText" style="font-size: 20px; margin:0; font-style: italic;">Loading...</p>
+    <p id="subjectTag" style="font-size: 12px; color:#cfc3d9; margin-top:10px; text-transform:uppercase;">Loading...</p>
+  </div>
+
+  <div class="word-box" id="wordDisplay">
+  </div>
+
+  <h3 style="color: #ff4d4d;" id="livesText">Lives: ❤️❤️❤️❤️❤️</h3>
+  
+  <div class="keyboard" id="keyboard"></div>
+
+  <div style="margin-top:20px;">
+    <button id="skipBtn" style="padding:10px 20px; background:transparent; border:1px solid #cfc3d9; color:#cfc3d9; border-radius:10px; cursor:pointer;">Skip Question</button>
+  </div>
+</div>
+
+<!-- Modal for Game Over / Win -->
+<div id="resultModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index: 100;">
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:#2a2a2a; border:2px solid #b366ff; padding:40px; border-radius:20px; text-align:center; box-shadow: 0 0 50px rgba(179,102,255,0.4);">
+    <h1 id="resultTitle" style="color: white; font-size: 40px; margin-top:0;">You Won! 🎉</h1>
+    <p id="resultMsg" style="color:#cfc3d9; font-size: 18px;">Your progress tracker has been automatically updated securely!</p>
+    <button onclick="window.location.reload();" style="padding:15px 30px; background:#b366ff; color:white; border:none; border-radius:10px; font-size: 18px; font-weight:bold; cursor:pointer; margin-top:20px;">Play Next Round</button>
+  </div>
+</div>
+
+<script src="../js/api.js"></script>
+<script src="../js/games.js"></script>
+</body>
+</html>

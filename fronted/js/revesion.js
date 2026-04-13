@@ -147,6 +147,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (selected === correct) score++;
 
+    // Sync progress tracking to backend
+    const subject = subjectSelect.value;
+    const isCorrect = (selected === correct);
+    
+    // We expect fetchWithAuth to be available globally from api.js
+    if (typeof fetchWithAuth === 'function') {
+        fetchWithAuth("/flashcards/practice", {
+            method: "POST",
+            body: JSON.stringify({ isCorrect, subject })
+        }).catch(err => console.warn("Could not sync revision score:", err));
+    }
+
     answered = true;
   }
 

@@ -1,16 +1,15 @@
 const mongoose = require("mongoose");
 
 const progressSchema = new mongoose.Schema({
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+    required: true
   },
-  subject: String,
-  completedTopics: [String],
-  progressPercentage: {
-    type: Number,
-    default: 0,
-  }
+  subject: { type: String, required: true },
+  correctAnswers: { type: Number, default: 0 },
+  wrongAnswers: { type: Number, default: 0 },
+  lastPracticed: { type: Date, default: Date.now }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Progress", progressSchema);

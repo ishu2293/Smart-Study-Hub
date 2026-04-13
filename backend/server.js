@@ -17,6 +17,7 @@ app.use(express.json());
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/notes", require("./routes/noteRoutes"));
 app.use("/api/flashcards", require("./routes/flashcardRoutes"));
+app.use("/api/dashboard", require("./routes/dashboardRoutes"));
 app.use("/api/ai", require("./routes/aiRoutes")); // chatbot
 
 // ✅ Test route

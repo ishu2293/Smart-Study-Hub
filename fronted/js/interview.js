@@ -32,17 +32,25 @@ function startRecording() {
 
 // Send to backend
 async function submitAnswer() {
-  const res = await fetch("http://localhost:5000/api/ai/evaluate", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      question: currentQuestion,
-      answer: userAnswer
-    })
-  });
+  document.getElementById("result").innerText = "Analyzing answer...";
 
-  const data = await res.json();
-  document.getElementById("result").innerText = data.result;
+  try {
+    const res = await fetchWithAuth("/ai/evaluate", {
+      method: "POST",
+      body: JSON.stringify({
+        question: currentQuestion,
+        answer: userAnswer
+      })
+    });
+
+    if (res && res.ok) {
+        const data = await res.json();
+        document.getElementById("result").innerText = data.result || "Analyzed successfully!";
+    } else {
+        document.getElementById("result").innerText = "Failed to evaluate answer.";
+    }
+  } catch (err) {
+      console.warn(err);
+      document.getElementById("result").innerText = "Backend API not available.";
+  }
 }

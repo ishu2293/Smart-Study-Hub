@@ -43,11 +43,35 @@
   </p>
 
   <!-- CONTENT -->
+  <!-- CONTENT -->
+  <style>
+    #noteContent:focus {
+      border-color: #b366ff !important;
+      box-shadow: 0 0 15px rgba(179, 102, 255, 0.5) !important;
+      outline: none;
+      height: 120px !important;
+    }
+    #noteBtn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(179, 102, 255, 0.6) !important;
+      background: linear-gradient(135deg, #c788ff, #7b4b78) !important;
+    }
+  </style>
+
+  <div class="creation-panel" style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; margin-bottom: 40px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center;">
+    <h3 style="margin-bottom: 15px; margin-top: 0; color: #e0b3ff; font-size: 26px;">🧠 Capture a Thought</h3>
+    <form id="createNoteForm" style="display:flex; flex-direction:column; gap:15px; align-items: center;">
+      <textarea id="noteContent" placeholder="What did you learn today? Type a concept, definition, or idea..." required style="width: 100%; max-width: 600px; height: 60px; padding:15px 20px; border-radius:15px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white; font-size: 16px; resize:none; transition: all 0.3s ease; box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);"></textarea>
+      <button id="noteBtn" type="submit" style="padding:12px 35px; background: linear-gradient(135deg, #b366ff, #5f3c5b); color:white; border:none; border-radius:30px; font-weight:bold; font-size: 16px; letter-spacing: 0.5px; cursor:pointer; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(179, 102, 255, 0.3);">✨ Add Note</button>
+    </form>
+  </div>
+
   <div class="subjects-grid" id="chapters"></div>
 
 </div>
 
 <!-- SCRIPT -->
+<script src="../js/api.js"></script>
 <script src="../js/notes.js"></script>
 
 </body>
