@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         usernameEl.innerHTML = `${username} <span style="font-size:18px; color:#ff6b2b; background: rgba(255,107,43,0.1); padding: 5px 12px; border-radius: 20px; vertical-align: middle; margin-left: 15px; border: 1px solid rgba(255,107,43,0.3); box-shadow: 0 0 10px rgba(255,107,43,0.2);">🔥 ${user.streakCount || 1} Day Streak</span>`;
     }
 
+    // Update DSA Progress from LocalStorage
+    const dsaEl = document.getElementById('dsaCount');
+    if (dsaEl) {
+        const solvedDsa = JSON.parse(localStorage.getItem('solved_dsa_questions')) || [];
+        dsaEl.innerText = solvedDsa.length + '/31';
+    }
+
     try {
         const res = await fetchWithAuth("/dashboard");
         if (res && res.ok) {
