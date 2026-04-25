@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let solvedInCard = 0;
 
             tableRows.forEach(row => {
-                const titleNode = row.querySelector('td:nth-child(2)');
+                const titleNode = row.querySelector('td:nth-child(1)');
                 if (titleNode) {
                     const title = titleNode.innerText.trim();
                     if (solvedDsa.includes(title)) {
@@ -44,12 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Apply solved state to all circles on load
-    const circles = document.querySelectorAll('tbody .circle-outline');
+    const circles = document.querySelectorAll('tbody td:nth-child(1)');
     circles.forEach(circle => {
         const row = circle.closest('tr');
         if (!row) return;
         
-        const titleNode = row.querySelector('td:nth-child(2)');
+        const titleNode = row.querySelector('td:nth-child(1)');
         if (!titleNode) return;
         
         const title = titleNode.innerText.trim();

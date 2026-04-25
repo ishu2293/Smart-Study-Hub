@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { q: "UDP is?", options: ["Reliable", "Slow", "Fast", "None"], correct: 2 },
         { q: "IP Address is?", options: ["Name", "Identifier", "File", "None"], correct: 1 },
         { q: "Routing means?", options: ["Path selection", "Speed", "Delete", "None"], correct: 0 }
+      ]
     },
 
     SE: {

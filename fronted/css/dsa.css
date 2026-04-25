@@ -333,3 +333,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/* Problem cells - plain text with no effects */
+tbody td:nth-child(1) {
+    color: #000000 !important;
+}
