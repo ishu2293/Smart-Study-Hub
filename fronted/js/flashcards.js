@@ -13,14 +13,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Failed fetching flashcards from backend", err);
     }
 
-    // Fallback if user has none
-    if (flashcards.length === 0) {
-        flashcards = [
-            { subject: "DSA", question: "What is time complexity?", answer: "It measures how runtime grows with input size.", fallback: true },
-            { subject: "DSA", question: "What is a stack?", answer: "A data structure that follows LIFO.", fallback: true },
-            { subject: "OS", question: "What is a process?", answer: "A program in execution.", fallback: true }
-        ];
-    }
+    // Default flashcards
+    const defaultFlashcards = [
+        { subject: "DSA", question: "What is time complexity?", answer: "It measures how runtime grows with input size.", fallback: true },
+        { subject: "DSA", question: "What is a stack?", answer: "A data structure that follows LIFO.", fallback: true },
+        { subject: "OS", question: "What is a process?", answer: "A program in execution.", fallback: true },
+        { subject: "WAD", question: "What is the DOM?", answer: "Document Object Model, a programming API for HTML and XML documents.", fallback: true },
+        { subject: "SE", question: "What is Agile?", answer: "An iterative approach to software development.", fallback: true }
+    ];
+
+    // Merge user flashcards with default flashcards
+    flashcards = [...flashcards, ...defaultFlashcards];
     
     // Inject custom UI for correct/wrong if not already there
     const container = document.querySelector(".flashcard-container");
