@@ -139,6 +139,70 @@ document.addEventListener("DOMContentLoaded", async () => {
         detail: "Includes encryption, firewalls, VPNs, and authentication."
       }
     ]
+  },
+
+  SE: {
+    title: "Software Engineering",
+    youtube: "https://www.youtube.com/embed/sllNqEwA7rE",
+    concepts: [
+      {
+        name: "SDLC",
+        desc: "Software Development Life Cycle.",
+        detail: "Phases include Planning, Analysis, Design, Implementation, Testing, Deployment, and Maintenance."
+      },
+      {
+        name: "Agile Methodology",
+        desc: "Iterative development process.",
+        detail: "Focuses on flexibility, continuous improvement, and customer collaboration over rigid planning."
+      },
+      {
+        name: "UML Diagrams",
+        desc: "Unified Modeling Language.",
+        detail: "Includes Use Case, Class, Sequence, and Activity diagrams for visualizing system architecture."
+      },
+      {
+        name: "Testing Strategies",
+        desc: "Ensuring software quality and correctness.",
+        detail: "Includes Unit Testing, Integration Testing, System Testing, and Acceptance Testing. Employs both Black Box and White Box techniques."
+      },
+      {
+        name: "Design Patterns",
+        desc: "Reusable solutions to recurring problems.",
+        detail: "E.g., Singleton for one instance, Factory for object creation, and Observer for event handling."
+      }
+    ]
+  },
+
+  WAD: {
+    title: "Web Application Development",
+    youtube: "https://www.youtube.com/embed/BcfWEjyheCg",
+    concepts: [
+      {
+        name: "HTML5 & CSS3",
+        desc: "Core building blocks of the Web.",
+        detail: "HTML structures the content with semantic tags; CSS styles it using Grid, Flexbox, and responsive media queries."
+      },
+      {
+        name: "JavaScript and DOM",
+        desc: "Programming the behavior of web pages.",
+        detail: "Allows the page to be dynamic by manipulating the Document Object Model, handling events, and executing asynchronous API calls."
+      },
+      {
+        name: "RESTful APIs",
+        desc: "Representational State Transfer.",
+        detail: "Architecture for networked applications using standard HTTP methods (GET, POST, PUT, DELETE) and JSON payloads."
+      },
+      {
+        name: "Frontend SPA Frameworks",
+        desc: "Single Page Applications.",
+        detail: "Using React, Angular, or Vue to build fast, reactive user interfaces without full page reloads."
+      },
+      {
+        name: "Authentication & Security",
+        desc: "Securing web applications.",
+        detail: "Implementing JWT (JSON Web Tokens), OAuth, preventing XSS, and protecting data with CSRF tokens."
+      }
+    ]
   }
 };
 

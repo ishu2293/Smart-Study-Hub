@@ -1,7 +1,13 @@
 const questions = [
   "Explain polymorphism",
   "What is REST API?",
-  "What is JavaScript closure?"
+  "What is JavaScript closure?",
+  "How does Agile differ from Waterfall in Software Engineering?",
+  "What is the difference between a process and a thread?",
+  "Explain the components of the MVC architecture.",
+  "What are the ACID properties in standard database transactions?",
+  "Describe the TCP/IP connection handshake.",
+  "What is the Virtual DOM and how does React use it?"
 ];
 
 let currentQuestion = "";

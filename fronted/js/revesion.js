@@ -74,6 +74,39 @@ document.addEventListener("DOMContentLoaded", () => {
         { q: "UDP is?", options: ["Reliable", "Slow", "Fast", "None"], correct: 2 },
         { q: "IP Address is?", options: ["Name", "Identifier", "File", "None"], correct: 1 },
         { q: "Routing means?", options: ["Path selection", "Speed", "Delete", "None"], correct: 0 }
+    },
+
+    SE: {
+      revision: [
+        { title: "Software Development Life Cycle", content: "Process of planning, creating, testing, and deploying." },
+        { title: "Agile Model", content: "Iterative approach focusing on customer collaboration." },
+        { title: "White Box Testing", content: "Testing internal structures or workings of an application." },
+        { title: "Black Box Testing", content: "Testing functionality without knowing internal structure." },
+        { title: "Design Patterns", content: "Typical solutions to common problems in software design." }
+      ],
+      quiz: [
+        { q: "What does SDLC stand for?", options: ["Software Design Life Cycle", "System Development Life Cycle", "Software Development Life Cycle", "System Design Life Cycle"], correct: 2 },
+        { q: "Which model is iterative?", options: ["Waterfall", "Agile", "V-Model", "None"], correct: 1 },
+        { q: "White box testing involves?", options: ["Internal structure", "Only outputs", "Hardware", "Users"], correct: 0 },
+        { q: "Singleton is a?", options: ["Testing Method", "Design Pattern", "Process", "Algorithm"], correct: 1 },
+        { q: "Agile values?", options: ["Documentation over execution", "Customer collaboration", "Strict schedules", "Large teams"], correct: 1 }
+      ]
+    },
+
+    WAD: {
+      revision: [
+        { title: "HTML/CSS", content: "Building blocks for web structure and styling." },
+        { title: "DOM", content: "Document Object Model, programming interface for web documents." },
+        { title: "REST API", content: "Architecture style for distributed hypermedia systems." },
+        { title: "Frontend Frameworks", content: "Libraries like React, Vue, Angular for building UIs." },
+        { title: "JWT", content: "JSON Web Tokens for secure authentication." }
+      ],
+      quiz: [
+        { q: "DOM stands for?", options: ["Document Object Model", "Data Object Model", "Document Orientation Model", "None"], correct: 0 },
+        { q: "REST is?", options: ["Framework", "Language", "Architectural Style", "Database"], correct: 2 },
+        { q: "Which is a frontend framework?", options: ["Express", "MongoDB", "React", "NodeJS"], correct: 2 },
+        { q: "JWT is used for?", options: ["Styling", "Authentication", "Routing", "Database"], correct: 1 },
+        { q: "CSS stands for?", options: ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style Sheets", "Colorful Style Sheets"], correct: 0 }
       ]
     }
 
