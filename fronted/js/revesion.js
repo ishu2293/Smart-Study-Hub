@@ -163,6 +163,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.next = function () {
+    if (!subjectSelect.value) {
+      alert("First choose the subject");
+      return;
+    }
     if (modeSelect.value === "quiz" && !answered) return;
 
     index++;

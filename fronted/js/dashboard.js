@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Update Username Greeting
     const usernameEl = document.getElementById("username");
     if(usernameEl) {
-        usernameEl.innerHTML = `${username} <span style="font-size:18px; color:#ff6b2b; background: rgba(255,107,43,0.1); padding: 5px 12px; border-radius: 20px; vertical-align: middle; margin-left: 15px; border: 1px solid rgba(255,107,43,0.3); box-shadow: 0 0 10px rgba(255,107,43,0.2);">🔥 ${user.streakCount || 1} Day Streak</span>`;
+        usernameEl.innerHTML = `${username} <span style="font-size:18px; color:#ff6b2b; background: rgba(255,107,43,0.1); padding: 5px 12px; border-radius: 20px; vertical-align: middle; margin-left: 15px; border: 1px solid rgba(255,107,43,0.3); box-shadow: 0 0 10px rgba(255,107,43,0.2);">${user.streakCount || 1} Day Streak</span>`;
     }
 
     // Update DSA Progress from LocalStorage
