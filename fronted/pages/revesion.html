@@ -9,43 +9,312 @@
 
 <body>
 
-  <div class="revision-container">
+  <style>
+    body {
+      background: #fdfdfd;
+      font-family: "Inter", -apple-system, sans-serif;
+      margin: 0;
+    }
 
-    <h2>Revision & Quiz Mode</h2>
+    .revise-container {
+      text-align: center;
+      padding-top: 40px;
+      padding-bottom: 60px;
+      max-width: 900px;
+      margin: auto;
+    }
 
-    <!-- SUBJECT -->
-    <select id="subjectSelect">
-      <option value="">Select Subject</option>
-      <option value="DSA">DSA</option>
-      <option value="DBMS">DBMS</option>
-      <option value="OS">OS</option>
-      <option value="CN">CN</option>
-      <option value="SE">SE</option>
-      <option value="WAD">WAD</option>
-    </select>
+    .header-title {
+      font-size: 2.8rem;
+      color: #1a233a;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
 
-    <!-- MODE -->
-    <select id="modeSelect">
-      <option value="revision">Revision Mode</option>
-      <option value="quiz">Quiz Mode</option>
-    </select>
+    .header-decoration {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 40px;
+    }
+    
+    .header-decoration span:first-child {
+      display: inline-block;
+      width: 30px;
+      height: 4px;
+      background: #46b8aa;
+      border-radius: 5px;
+    }
 
-    <!-- CONTENT -->
-    <div class="flashcard">
-      <p id="mainText">Select subject to start</p>
+    .header-decoration span:last-child {
+      display: inline-block;
+      width: 6px;
+      height: 4px;
+      background: #46b8aa;
+      border-radius: 50%;
+    }
+    
+    .header-decoration span:nth-child(2) {
+      display: inline-block;
+      width: 6px;
+      height: 4px;
+      background: #46b8aa;
+      border-radius: 50%;
+    }
+
+    .selectors {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .dropdown {
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid #eaeaea;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #112240;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      outline: none;
+      min-width: 200px;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23112240%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 10px auto;
+    }
+
+    .fancy-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 50px 40px;
+      box-shadow: 0px 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+      font-family: inherit;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .card-left img {
+      width: 100%;
+      height: auto;
+      max-width: 320px;
+    }
+
+    .card-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .main-icon {
+      font-size: 1.8rem;
+      color: #5abcb0;
+      background: #e9f6f5;
+      padding: 12px;
+      border-radius: 50%;
+    }
+
+    .header-group h2 {
+      margin: 0 0 5px 0;
+      font-size: 1.8rem;
+      color: #16243d;
+    }
+
+    .header-group p {
+      margin: 0;
+      color: #636b7b;
+      font-size: 1.05rem;
+    }
+
+    .separator {
+      border: none;
+      height: 1px;
+      background: #e2e8e7;
+      margin: 20px 0;
+      position: relative;
+    }
+    .separator::before {
+      content: "";
+      position: absolute;
+      left: 30%;
+      top: -3px;
+      width: 6px;
+      height: 6px;
+      background: #5abcb0;
+      border-radius: 50%;
+    }
+
+    .desc-text {
+      color: #6c7689;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .tip-box {
+      display: flex;
+      gap: 15px;
+      background: #f1fafa;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #dff1ef;
+      align-items: flex-start;
+    }
+
+    .tip-icon {
+      font-size: 1.4rem;
+      color: #4db3a7;
+      background: #d4ece9;
+      padding: 10px;
+      border-radius: 50%;
+    }
+
+    .tip-box strong {
+      display: block;
+      color: #122137;
+      font-size: 1.05rem;
+      margin-bottom: 5px;
+    }
+
+    .tip-box p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #556276;
+      line-height: 1.5;
+    }
+
+    .next-btn {
+      background: #3e0c4a;
+      color: #ffffff;
+      padding: 15px 45px;
+      border-radius: 30px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .next-btn:hover {
+      background: #2b0833;
+      transform: translateY(-2px);
+    }
+    
+        .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8f9fa;
+      border: 1px solid #e1e4e8;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      color: #112240 !important;
+      transition: all 0.2s;
+    }
+    .option-btn:hover {
+      background: #eef2f5;
+      border-color: #d1d5da;
+    }
+
+    /* Fallback placeholder text initially */
+    #placeholderText {
+       font-size: 1.3rem; 
+       color: #888; 
+       margin-bottom:30px;
+    }
+  </style>
+  
+  <div class="revise-container">
+    <h1 class="header-title">Revision & Quiz Mode</h1>
+    <div class="header-decoration">
+      <span></span><span></span><span></span>
     </div>
 
-    <!-- OPTIONS (ONLY FOR QUIZ) -->
-    <div id="optionsContainer"></div>
+    <!-- SELECTORS -->
+    <div class="selectors">
+      <!-- SUBJECT -->
+      <select id="subjectSelect" class="dropdown">
+        <option value="">Select Subject</option>
+        <option value="DSA">DSA</option>
+        <option value="DBMS">DBMS</option>
+        <option value="OS">OS</option>
+        <option value="CN">CN</option>
+        <option value="SE">SE</option>
+        <option value="WAD">WAD</option>
+      </select>
 
-    <!-- BUTTON -->
-    <button onclick="next()">Next</button>
+      <!-- MODE -->
+      <select id="modeSelect" class="dropdown">
+        <option value="revision">Revision Mode</option>
+        <option value="quiz">Quiz Mode</option>
+      </select>
+    </div>
 
-    <!-- PROGRESS -->
-    <p id="progressText"></p>
+    <!-- CONTENT CARD -->
+    <div class="fancy-card">
+      <!-- PLACEHOLDER BEFORE SELECTION -->
+      <div id="placeholderLayout">
+        <p id="placeholderText">Please select a subject to begin your session.</p>
+      </div>
 
-    <!-- RESULT -->
-    <h3 id="resultText"></h3>
+      <!-- REVISION LAYOUT -->
+      <div id="revisionLayout" style="display:none;" class="card-grid">
+        <div class="card-left">
+          <img src="img/revision_illustration.png" alt="Study Illustration" />
+        </div>
+        <div class="card-right">
+          <div class="header-group">
+            <i class="fa-regular fa-lightbulb main-icon"></i>
+            <div>
+              <h2 id="revTitle">Title</h2>
+              <p class="desc-text" id="revContent" style="margin-top: 10px; margin-bottom: 0;">Process to remove redundancy</p>
+            </div>
+          </div>
+          <hr class="separator" />
+        </div>
+      </div>
+
+      <!-- QUIZ LAYOUT -->
+      <div id="quizLayout" style="display:none; text-align:left;">
+        <div class="header-group" style="justify-content:center; text-align:center;">
+            <i class="fa-regular fa-circle-question main-icon" style="background:#fdf2e9; color:#e67e22;"></i>
+        </div>
+        <h2 id="quizQuestion" style="font-size: 1.6rem; color:#112240; margin-bottom: 30px; text-align:center;">Question?</h2>
+        <div id="quizOptions"></div>
+      </div>
+
+    </div>
+
+    <!-- NEXT BUTTON -->
+    <button class="next-btn" onclick="next()">Next <i class="fa-solid fa-chevron-right"></i></button>
+
+    <!-- PROGRESS & RESULT -->
+    <p id="progressText" style="margin-top:25px; color:#636b7b; font-weight:600;"></p>
+    <h3 id="resultText" style="color:#5abcb0; font-size:1.4rem;"></h3>
 
   </div>
 

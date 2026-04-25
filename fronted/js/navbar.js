@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <li><a href="subjects.html">Subjects</a></li>
       <li><a href="chatbot.html">AI Chat</a></li>
       <li><a href="interview.html">Mock Interview</a></li>
+      <li><a href="games.html">Games</a></li>
     </ul>
 
     <!-- Login & Register at end -->
