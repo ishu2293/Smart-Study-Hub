@@ -518,36 +518,64 @@ textarea::placeholder {
 
 .features {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
   padding: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* CARD */
 .feature-card {
+  display: block;
+  text-decoration: none;
   background: rgba(255,255,255,0.1);
-  padding: 25px;
+  padding: 30px 25px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   text-align: left;
   color: white;
+  border: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .feature-card i {
-  font-size: 30px;
-  margin-bottom: 10px;
+  font-size: 36px;
+  margin-bottom: 15px;
   color: #e0b3ff;
 }
 
 .feature-card h3 {
   margin: 10px 0;
+  font-size: 22px;
+  color: white;
+}
+
+.feature-card p {
+  color: #cfc3d9;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(123,75,120,0.5);
+  box-shadow: 0 15px 40px rgba(224,179,255,0.3);
+  border-color: #b366ff;
+  background: rgba(255,255,255,0.15);
+}
+
+@media (max-width: 1024px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .features {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
 }
 
 .dashboard {
