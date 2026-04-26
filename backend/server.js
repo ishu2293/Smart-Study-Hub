@@ -25,9 +25,9 @@ const path = require("path");
 // ✅ Serve Static Frontend Files
 app.use(express.static(path.join(__dirname, "../fronted")));
 
-// ✅ Default route to load the frontend index.html
+// ✅ Default route to redirect to the frontend index.html
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../fronted/pages/index.html"));
+  res.redirect("/pages/index.html");
 });
 
 // ✅ Error Handler (LAST)
