@@ -9,7 +9,11 @@ async function sendMessage() {
   chatBox.innerHTML += `<div class="user">You: ${message}</div>`;
 
   try {
-    const res = await fetch("http://localhost:5000/api/ai/chat", {
+    const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:5000/api/ai/chat'
+      : '/api/ai/chat';
+
+    const res = await fetch(apiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

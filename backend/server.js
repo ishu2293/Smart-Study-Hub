@@ -20,9 +20,14 @@ app.use("/api/flashcards", require("./routes/flashcardRoutes"));
 app.use("/api/dashboard", require("./routes/dashboardRoutes"));
 app.use("/api/ai", require("./routes/aiRoutes")); // chatbot
 
-// ✅ Test route
+const path = require("path");
+
+// ✅ Serve Static Frontend Files
+app.use(express.static(path.join(__dirname, "../fronted")));
+
+// ✅ Default route to load the frontend index.html
 app.get("/", (req, res) => {
-  res.send("StudyHub Backend Running");
+  res.sendFile(path.join(__dirname, "../fronted/pages/index.html"));
 });
 
 // ✅ Error Handler (LAST)
